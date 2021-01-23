@@ -1,38 +1,34 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Random Letter Generator
-function generateLowerCaseLetter() {
-  const alphabet = "abcdefghijklmnopqrstuvwyxz"
-  return alphabet[Math.floor(Math.random() * alphabet.length)]
-}
+var lowerCase = "abcdefghijklmnopqrstuvwxyz"
+var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var symbols = "!@#$%&?"
+var numbers = "123456789"
+var lengthChoice = " "
+var passwordChoices = " "
 
-function generateUpperCaseLetter() {
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  return alphabet[Math.floor(Math.random() * alphabet.length)]
-}
- 
-
-function generatePassword() {
-  var lengthChoice = window.prompt("Choose Length of Password, Must be between 8 and 128 Characters");
-
-  if (lengthChoice < 8 || lengthChoice > 128) {
-    return
+var choices = function() {
+  var lengthChoice = prompt("How many Characters would you like to have, Choose between 8 - 128")
+  if(lengthChoice < 8 || lengthChoice > 128) {
+    alert("Invalid Choice")
   }
-
-  var lowerCase = window.confirm("Include lower case letters?")
-
-  if (lowerCase === true) { 
-    function generateLowerCaseLetter() {
-    const alphabet = "abcdefghijklmnopqrstuvwyxz"
-    return alphabet[Math.floor(Math.random() * alphabet.length)]
-  }
-
-
+  else {
+    var lowerCase = confirm("Would you like to have lower case letters?")
+  } if (lowerCase) {
+    passwordChoices += lowerCase
+  } var upperCase = confirm("Would you like to have Upper case letters?")
+  if(upperCase) {
+    passwordChoices += upperCase
   }
 }
+choices()
 
-console.log(generatePassword());
+console.log(passwordChoices);
+// function generatePassword() {
+  
+// }
+
 
 // Write password to the #password input
 function writePassword() {
@@ -44,4 +40,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword());
