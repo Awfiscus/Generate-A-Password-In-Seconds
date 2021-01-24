@@ -5,29 +5,39 @@ var lowerCase = "abcdefghijklmnopqrstuvwxyz"
 var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var symbols = "!@#$%&?"
 var numbers = "123456789"
-var lengthChoice = " "
 var passwordChoices = " "
 
-var choices = function() {
-  var lengthChoice = prompt("How many Characters would you like to have, Choose between 8 - 128")
-  if(lengthChoice < 8 || lengthChoice > 128) {
+
+
+var lengthChoice = window.prompt("How many Characters would you like to have, Choose between 8 - 128");
+
+if(lengthChoice < 8 || lengthChoice > 128) {
     alert("Invalid Choice")
-  }
-  else {
-    var lowerCase = confirm("Would you like to have lower case letters?")
-  } if (lowerCase) {
+}
+var lower = window.confirm("Would you like to have lower case letters?")
+var upper = window.confirm("Would you like to have Upper case letters?")
+
+function generatePassword() {
+  var password = " "
+
+  if (lower) {
     passwordChoices += lowerCase
-  } var upperCase = confirm("Would you like to have Upper case letters?")
-  if(upperCase) {
+  }
+
+  if (upper) {
     passwordChoices += upperCase
   }
-}
-choices()
 
-console.log(passwordChoices);
-// function generatePassword() {
-  
-// }
+  for(var i = 0; i < lengthChoice; i++) {
+    
+    var randomIndex = Math.floor(Math.random() * passwordChoices.length)
+
+    password += passwordChoices[randomIndex]
+  }
+  return password
+}
+
+console.log(generatePassword());
 
 
 // Write password to the #password input
