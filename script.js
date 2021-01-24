@@ -7,31 +7,28 @@ var symbols = "!@#$%&?"
 var numbers = "123456789"
 var passwordChoices = " "
 
-
-
-// var lengthChoice = window.prompt("How many Characters would you like to have, Choose between 8 - 128");
-
-// if(lengthChoice < 8 || lengthChoice > 128) {
-//     alert("Invalid Choice")
-// }
-// var lower = window.confirm("Would you like to have lower case letters?")
-// var upper = window.confirm("Would you like to have Upper case letters?")
-// var sym = window.confirm("Would you like to include symbols?")
-// var nums = window.confirm("Would you like to include numbers?")
-
+//activated function when button is clicked
 function generatePassword() {
   var password = " "
 
+  //prompt allows user to choose length
   var lengthChoice = window.prompt("How many Characters would you like to have, Choose between 8 - 128");
-
+  //if user choice is not within parameters then dialog box is exited with a message
   if(lengthChoice < 8 || lengthChoice > 128) {
     alert("Invalid Choice")
+    return
   }
+  //confirm commands save variables to determine which characters to add to password
   var lower = window.confirm("Would you like to have lower case letters?")
   var upper = window.confirm("Would you like to have Upper case letters?")
   var sym = window.confirm("Would you like to include symbols?")
   var nums = window.confirm("Would you like to include numbers?")
-
+  //if not characters is chosen action is exited
+  if(lower && upper && sym && nums === false) {
+    window.alert("You must include one selection");
+    return
+  }
+  //if statements belows add strings to passwordChoice Array if confirmed by user
   if (lower) {
     passwordChoices += lowerCase
   }
@@ -47,7 +44,7 @@ function generatePassword() {
   if (nums) {
     passwordChoices += numbers
   }
-
+  //for loop builds password based on lengthChoice chosen by user
   for(var i = 0; i < lengthChoice; i++) {
     
     var randomIndex = Math.floor(Math.random() * passwordChoices.length)
