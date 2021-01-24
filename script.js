@@ -16,6 +16,8 @@ if(lengthChoice < 8 || lengthChoice > 128) {
 }
 var lower = window.confirm("Would you like to have lower case letters?")
 var upper = window.confirm("Would you like to have Upper case letters?")
+var sym = window.confirm("Would you like to include symbols?")
+var nums = window.confirm("Would you like to include numbers?")
 
 function generatePassword() {
   var password = " "
@@ -26,6 +28,14 @@ function generatePassword() {
 
   if (upper) {
     passwordChoices += upperCase
+  }
+
+  if (sym) {
+    passwordChoices += symbols
+  }
+
+  if (nums) {
+    passwordChoices += numbers
   }
 
   for(var i = 0; i < lengthChoice; i++) {
@@ -50,4 +60,5 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword());
+//Removed () at end of writePassword so it runs when clicked.
+generateBtn.addEventListener("click", writePassword);
