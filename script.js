@@ -9,18 +9,28 @@ var passwordChoices = " "
 
 
 
-var lengthChoice = window.prompt("How many Characters would you like to have, Choose between 8 - 128");
+// var lengthChoice = window.prompt("How many Characters would you like to have, Choose between 8 - 128");
 
-if(lengthChoice < 8 || lengthChoice > 128) {
-    alert("Invalid Choice")
-}
-var lower = window.confirm("Would you like to have lower case letters?")
-var upper = window.confirm("Would you like to have Upper case letters?")
-var sym = window.confirm("Would you like to include symbols?")
-var nums = window.confirm("Would you like to include numbers?")
+// if(lengthChoice < 8 || lengthChoice > 128) {
+//     alert("Invalid Choice")
+// }
+// var lower = window.confirm("Would you like to have lower case letters?")
+// var upper = window.confirm("Would you like to have Upper case letters?")
+// var sym = window.confirm("Would you like to include symbols?")
+// var nums = window.confirm("Would you like to include numbers?")
 
 function generatePassword() {
   var password = " "
+
+  var lengthChoice = window.prompt("How many Characters would you like to have, Choose between 8 - 128");
+
+  if(lengthChoice < 8 || lengthChoice > 128) {
+    alert("Invalid Choice")
+  }
+  var lower = window.confirm("Would you like to have lower case letters?")
+  var upper = window.confirm("Would you like to have Upper case letters?")
+  var sym = window.confirm("Would you like to include symbols?")
+  var nums = window.confirm("Would you like to include numbers?")
 
   if (lower) {
     passwordChoices += lowerCase
@@ -46,8 +56,6 @@ function generatePassword() {
   }
   return password
 }
-
-console.log(generatePassword());
 
 
 // Write password to the #password input
