@@ -24,9 +24,9 @@ function generatePassword() {
   var sym = window.confirm("Would you like to include symbols?")
   var nums = window.confirm("Would you like to include numbers?")
   //if not characters is chosen action is exited
-  if(lower && upper && sym && nums === false) {
+  if((lower || upper || sym || nums) === false) {
     window.alert("You must include one selection");
-    return
+    return;
   }
   //if statements belows add strings to passwordChoice Array if confirmed by user
   if (lower) {
@@ -61,7 +61,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
+  
 }
 
 // Add event listener to generate button
